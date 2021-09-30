@@ -1,0 +1,42 @@
+{
+  "name": "Presupuesto",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "start": "electron .",
+    "build": "electron-builder",
+    "build-windows": "electron-builder -w",
+    "build-mac": "electron-builder -m"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "electron-reload": "^1.5.0",
+    "morgan": "^1.10.0",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "electron": "^11.5.0",
+    "electron-builder": "^22.11.7"
+  },
+  "build": {
+    "appId": "com.miapp.disap",
+    "win": {
+      "target": [
+        "nsis"
+      ],
+      "icon": "src/vista/icono.ico",
+      "requestedExecutionLevel": "requireAdministrator"
+    },
+    "nsis": {
+      "installerIcon": "src/vista/icono.ico",
+      "uninstallerIcon": "src/vista/icono.ico",
+      "uninstallDisplayName": "Presupuesto",
+      "license": "license.txt",
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    }
+  }
+}
