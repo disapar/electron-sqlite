@@ -5,9 +5,7 @@
   "main": "src/main.js",
   "scripts": {
     "start": "electron .",
-    "build": "electron-builder",
-    "build-windows": "electron-builder -w",
-    "build-mac": "electron-builder -m"
+    "build": "electron-builder"
   },
   "keywords": [],
   "author": "",
@@ -27,12 +25,11 @@
       "target": [
         "nsis"
       ],
-      "icon": "src/vista/icono.ico",
-      "requestedExecutionLevel": "requireAdministrator"
+      "icon": "src/view/icono.ico"
     },
     "nsis": {
-      "installerIcon": "src/vista/icono.ico",
-      "uninstallerIcon": "src/vista/icono.ico",
+      "installerIcon": "src/view/icono.ico",
+      "uninstallerIcon": "src/view/icono.ico",
       "uninstallDisplayName": "Presupuesto",
       "license": "license.txt",
       "oneClick": false,

@@ -1,17 +1,26 @@
-const database = require('../database');
+const database = require("../database");
 
-database.serialize(function() {
-    database.run("CREATE TABLE clientes (info TEXT)");
-  
-    var stmt = database.prepare("INSERT INTO clientes VALUES (?)");
-    for (var i = 0; i < 20; i++) {
-        stmt.run("Cliente " + i);
-    }
-    stmt.finalize();
-  
-    database.each("SELECT * FROM clientes", function(err, row) {
-        console.log(row.id + ": " + row.info);
-    });
+const nombre = document.querySelector("#nombre"),
+  tel = document.querySelector("#telefono"),
+  dir = document.querySelector("#direccion"),
+  enviar = document.querySelector("#enviar");
+
+enviar.addEventListener("click", (e) => {
+  e.preventDefault();
+
+  console.log(nombre.value);
+  console.log(tel.value);
+  console.log(dir.value);
+
+  // cargar informacion a la tabla
+  var stmt = database.prepare(
+    "INSERT INTO clientes(nombre, tel, dir) VALUES (?,?,?)"
+  );
+
+  stmt.run([nombre.value, tel.value, dir.value]);
+
+  const data = database.each("SELECT * FROM clientes", (err, row) => {
+    console.log(row);
   });
-  
-  database.close();
+  stmt.finalize();
+});
